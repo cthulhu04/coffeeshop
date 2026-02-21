@@ -1,38 +1,274 @@
-.App {
-  text-align: center;
-}
+:root {
+      --green-dark:  #1e3d2b;
+      --green-mid:   #2a5238;
+      --cream:       #f0d9bc;
+      --cream-light: #f5e4ce;
+      --tan:         #e8c9a0;
+      --brown-text:  #3a2a1a;
+      --muted-text:  #6b5240;
+    }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+    /* ── BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
+      color: var(--brown-text);
+      overflow-x: hidden;
+    }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+    /* ── NAVBAR ── */
+    .navbar-custom {
+      background: var(--green-dark);
+      padding: 12px 48px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .brand-badge {
+      width: 44px; height: 44px;
+      background: var(--cream);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+    }
+    .brand-label {
+      font-family: 'Playfair Display', serif;
+      color: var(--cream);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .5px;
+      margin-left: 10px;
+    }
+    .nav-links a {
+      color: rgba(240,217,188,.8);
+      font-size: .92rem;
+      font-weight: 400;
+      text-decoration: none;
+      margin-left: 32px;
+      letter-spacing: .4px;
+      transition: color .2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: #fff; }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+    /* ── HERO ── */
+    .hero {
+      background: var(--green-dark);
+      position: relative;
+      padding: 70px 40px 110px;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 70px;
+      background: var(--cream);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .hero-cup {
+      width: 260px; height: 260px;
+      background: radial-gradient(circle at 40% 35%, #3a6b4a, var(--green-dark));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 8rem;
+      box-shadow: 0 24px 60px rgba(0,0,0,.45);
+      animation: float 4s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-14px); }
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero-body {
+      color: rgba(240,217,188,.8);
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 460px;
+    }
 
-.App-link {
-  color: #61dafb;
-}
+    /* ── SECTION SHARED ── */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: var(--brown-text);
+    }
+    .section-lead {
+      color: var(--muted-text);
+      font-size: .95rem;
+      font-weight: 700;
+      line-height: 1.75;
+      max-width: 580px;
+      margin: 0 auto;
+    }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+    /* ── ORDER ── */
+    .order-section { padding: 80px 40px 90px; background: var(--cream); }
+    .coffee-card { text-align: center; cursor: pointer; }
+    .coffee-card:hover .card-img-box { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(0,0,0,.18); }
+    .card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--brown-text);
+    }
+    .card-img-box {
+      background: var(--green-mid);
+      border-radius: 14px;
+      height: 160px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem;
+      transition: transform .3s ease, box-shadow .3s ease;
+      box-shadow: 0 6px 20px rgba(0,0,0,.12);
+      position: relative; overflow: hidden;
+    }
+    .card-img-box::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 25% 25%, rgba(255,255,255,.08), transparent 60%);
+    }
+    .order-btn {
+      background: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 8px 26px;
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--brown-text);
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,.1);
+      transition: background .2s, color .2s, transform .15s;
+    }
+    .order-btn:hover {
+      background: var(--green-dark);
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    /* ── ABOUT ── */
+    .about-section {
+      padding: 80px 40px 90px;
+      background: var(--cream);
+      border-top: 1px solid rgba(0,0,0,.07);
+    }
+    .team-card { text-align: center; }
+    .avatar-circle {
+      width: 130px; height: 130px;
+      border-radius: 50%;
+      border: 4px solid var(--green-dark);
+      background: #c5a882;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem;
+      margin: 0 auto 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.15);
+      overflow: hidden;
+    }
+    .team-role {
+      font-size: .78rem;
+      color: var(--muted-text);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+    .team-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-top: 3px;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      padding: 80px 40px 60px;
+      background: var(--cream);
+      border-top: 1px solid rgba(0,0,0,.07);
+    }
+    .col-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .hours-list, .info-list {
+      list-style: none; padding: 0;
+      font-size: .88rem;
+      font-weight: 700;
+      line-height: 2.2;
+      color: var(--brown-text);
+    }
+    .map-box {
+      border-radius: 14px;
+      height: 180px;
+      background: linear-gradient(135deg, #c8b99a, #b8a080);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,.12);
+    }
+    .map-grid {
+      position: absolute; inset: 0;
+      opacity: .2;
+      background-image:
+        linear-gradient(var(--green-dark) 1px, transparent 1px),
+        linear-gradient(90deg, var(--green-dark) 1px, transparent 1px);
+      background-size: 26px 26px;
+    }
+    .map-road-h {
+      position: absolute;
+      left: 0; right: 0;
+      height: 12px;
+      background: rgba(255,255,255,.35);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .map-road-v {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 12px;
+      background: rgba(255,255,255,.35);
+      left: 45%;
+    }
+    .map-pin {
+      position: absolute;
+      top: 50%; left: 45%;
+      transform: translate(-50%, -100%);
+      font-size: 2rem;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,.35));
+      z-index: 2;
+    }
+
+    /* ── FOOTER ── */
+    .footer-custom {
+      background: var(--green-dark);
+      color: rgba(240,217,188,.65);
+      text-align: center;
+      font-size: .82rem;
+      letter-spacing: .5px;
+      padding: 18px;
+    }
+
+    /* ── FADE-IN ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      animation: fadeUp .7s ease forwards;
+    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    .d1 { animation-delay: .1s; }
+    .d2 { animation-delay: .2s; }
+    .d3 { animation-delay: .3s; }
+    .d4 { animation-delay: .4s; }
+    .d5 { animation-delay: .5s; }
