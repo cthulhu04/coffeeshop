@@ -130,7 +130,7 @@
     .card-img-box {
       background: var(--green-mid);
       border-radius: 14px;
-      height: 160px;
+      height: 270px;
       display: flex; align-items: center; justify-content: center;
       font-size: 5rem;
       transition: transform .3s ease, box-shadow .3s ease;
@@ -141,6 +141,10 @@
       content: '';
       position: absolute; inset: 0;
       background: radial-gradient(circle at 25% 25%, rgba(255,255,255,.08), transparent 60%);
+    }
+    .card-img-box img {
+      height: 100%;
+      width: 100%;
     }
     .order-btn {
       background: #fff;
@@ -177,6 +181,10 @@
       margin: 0 auto 14px;
       box-shadow: 0 8px 24px rgba(0,0,0,.15);
       overflow: hidden;
+    }
+    .avatar-circle img {
+      height: 100%;
+      width: 100%;
     }
     .team-role {
       font-size: .78rem;

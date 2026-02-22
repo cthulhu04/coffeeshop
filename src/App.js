@@ -1,4 +1,7 @@
 import './App.css';
+import Coffees from './utilities/coffee';
+import OpeningHourse from './utilities/contact';
+import Staff from './utilities/about';
 
 function App() {
   return (
@@ -43,38 +46,23 @@ function App() {
       </p>
 
       <div className="row g-4 justify-content-center">
-      
-        <div className="col-6 col-md-3 fade-up d2">
-          <div className="coffee-card">
-            <div className="card-name">Cappuccino</div>
-            <div className="card-img-box mb-3">☕</div>
-            <button className="order-btn">$3 – order</button>
-          </div>
-        </div>
-        
-        <div className="col-6 col-md-3 fade-up d3">
-          <div className="coffee-card">
-            <div className="card-name">Espresso</div>
-            <div className="card-img-box mb-3">🍵</div>
-            <button className="order-btn">$3 – order</button>
-          </div>
-        </div>
-        
-        <div className="col-6 col-md-3 fade-up d4">
-          <div className="coffee-card">
-            <div className="card-name">Latte Macchiato</div>
-            <div className="card-img-box mb-3">🥛</div>
-            <button className="order-btn">$3 – order</button>
-          </div>
-        </div>
-       
-        <div className="col-6 col-md-3 fade-up d5">
-          <div className="coffee-card">
-            <div className="card-name">Americano</div>
-            <div className="card-img-box mb-3">☕</div>
-            <button className="order-btn">$3 – order</button>
-          </div>
-        </div>
+
+        {/* coffee cards */}
+        {
+          Coffees.map((coffee, key) => {
+            return (
+              <div className="col-6 col-md-3 fade-up d2">
+                <div className="coffee-card">
+                  <div className="card-name">{coffee.name}</div>
+                  <div className="card-img-box mb-3">
+                    <img src={`./img/${coffee.img}`} />
+                  </div>
+                  <button className="order-btn">${coffee.price} – order</button>
+                </div>
+              </div>
+            )
+          })
+        }
       </div>
     </div>
   </section>
@@ -89,27 +77,22 @@ function App() {
       </p>
 
       <div className="row g-4 justify-content-center">
-        <div className="col-6 col-md-3 fade-up d2">
-          <div className="team-card">
-            <div className="avatar-circle">👔</div>
-            <div className="team-role">CEO</div>
-            <div className="team-name">Tom Smith</div>
-          </div>
-        </div>
-        <div className="col-6 col-md-3 fade-up d3">
-          <div className="team-card">
-            <div className="avatar-circle">👩‍💼</div>
-            <div className="team-role">Manager</div>
-            <div className="team-name">Emily Knight</div>
-          </div>
-        </div>
-        <div className="col-6 col-md-3 fade-up d4">
-          <div className="team-card">
-            <div className="avatar-circle">🧑‍🍳</div>
-            <div className="team-role">HM</div>
-            <div className="team-name">Marcos Gomez</div>
-          </div>
-        </div>
+        {
+          Staff.map((employee, key) => {
+            return (
+              
+              <div className="col-6 col-md-3 fade-up d2">
+                <div className="team-card">
+                  <div className="avatar-circle">
+                    <img src={`./img/${employee.img}`} />
+                  </div>
+                  <div className="team-role">{employee.status}</div>
+                  <div className="team-name">{employee.name}</div>
+                </div>
+              </div>
+            )
+          })
+        }
       </div>
     </div>
   </section>
@@ -124,11 +107,11 @@ function App() {
         <div className="col-md-3 text-center fade-up d2">
           <div className="col-title">Opening Hours</div>
           <ul className="hours-list">
-            <li>Monday - 09:00 – 21:00</li>
-            <li>Tuesday - 09:00 – 21:00</li>
-            <li>Wednesday - 09:00 – 21:00</li>
-            <li>Thursday - 09:00 – 21:00</li>
-            <li>Friday - 09:00 – 21:00</li>
+            {
+              OpeningHourse.map((date, key) => {
+                return <li>{date.date} - {date.hours}</li>
+              })
+            }
           </ul>
         </div>
 
